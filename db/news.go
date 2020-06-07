@@ -6,18 +6,21 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
-// Book is struct of db model
-type Book struct {
+// Article is struct of db model
+type Article struct {
 	ID          uuid.UUID
 	Title       string
 	Author      *string
-	ISBN        *int64
 	PublishedAt *time.Time
 	Publisher   *string
 	CoverURL    *string
 	Overview    *string
-	KeyInsights []string
 	CategoryID  *uuid.UUID
 	Category    *Category
-	Starred     bool
+}
+
+// GetNews from SQLDB
+func (data SQLDataStorage) GetNews() ([]*Article, error) {
+	var news []*Article
+	return news, nil
 }
