@@ -17,15 +17,15 @@ type Article struct {
 	Category    *Category `json:"cateogry,omitempty"`
 }
 
-// Newarticle is initialize pointer of article
-func Newarticle(article *db.Article) *Article {
+// NewArticle initialize pointer of article
+func NewArticle(article *db.Article) *Article {
 	var publishedAt string
 
 	if article.PublishedAt != nil {
 		publishedAt = article.PublishedAt.Format(DateTimeFormat)
 	}
 
-	b := &Article{
+	a := &Article{
 		article.Title,
 		article.Author,
 		article.ID.String(),
@@ -39,9 +39,20 @@ func Newarticle(article *db.Article) *Article {
 
 	if article.Category != nil {
 		categoryID := article.CategoryID.String()
-		b.CategoryID = &categoryID
-		b.Category = NewCategory(article.Category)
+		a.CategoryID = &categoryID
+		a.Category = NewCategory(article.Category)
 	}
 
-	return b
+	return a
+}
+
+// NewNews initialize pointer of news
+func NewNews(news []*db.Article) []*Article {
+	n := make([]*Article, len(news))
+
+	for _, article := range news {
+		n = append(n, NewArticle(article))
+	}
+
+	return n
 }

@@ -9,7 +9,7 @@ import (
 var logger *log.Logger
 
 func init() {
-	logger = log.New(os.Stderr, "", log.Ldata|log.Ltime|log.Lmicroseconds|log.LUTC)
+	logger = log.New(os.Stderr, "", log.Ldate|log.Ltime|log.Lmicroseconds|log.LUTC)
 }
 
 // Info logger
