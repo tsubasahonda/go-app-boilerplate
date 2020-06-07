@@ -6,18 +6,18 @@ import (
 
 // Book model
 type Book struct {
-	Title       string
-	Author      *string
-	ISBN        *int64
-	ID          string
-	PublishedAt *string
-	Publisher   *string
-	CoverURL    *string
-	Overview    *string
-	keyInsights []string
-	CategoryID  *string
-	Category    *Category
-	Starred     bool
+	Title       string `json:"title"`
+	Author      *string `json:"author"`
+	ISBN        *int64 `json:"isbn"`
+	ID          string `json:"id"`
+	PublishedAt *string `json:"publishedAt"`
+	Publisher   *string `json:"publisher"`
+	CoverURL    *string `json:"cover_url"`
+	Overview    *string `json:"overview"`
+	keyInsights []string `json:"key_insights"`
+	CategoryID  *string `json:"category_id"`
+	Category    *Category `json:"cateogry,omitempty"`
+	Starred     bool `json:"starred"`
 }
 
 func NewBook(book *db.Book) *Book {
