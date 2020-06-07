@@ -6,20 +6,21 @@ import (
 
 // Book model
 type Book struct {
-	Title       string `json:"title"`
-	Author      *string `json:"author"`
-	ISBN        *int64 `json:"isbn"`
-	ID          string `json:"id"`
-	PublishedAt *string `json:"publishedAt"`
-	Publisher   *string `json:"publisher"`
-	CoverURL    *string `json:"cover_url"`
-	Overview    *string `json:"overview"`
-	keyInsights []string `json:"key_insights"`
-	CategoryID  *string `json:"category_id"`
+	Title       string    `json:"title"`
+	Author      *string   `json:"author"`
+	ISBN        *int64    `json:"isbn"`
+	ID          string    `json:"id"`
+	PublishedAt *string   `json:"publishedAt"`
+	Publisher   *string   `json:"publisher"`
+	CoverURL    *string   `json:"cover_url"`
+	Overview    *string   `json:"overview"`
+	KeyInsights []string  `json:"key_insights"`
+	CategoryID  *string   `json:"category_id"`
 	Category    *Category `json:"cateogry,omitempty"`
-	Starred     bool `json:"starred"`
+	Starred     bool      `json:"starred"`
 }
 
+// NewBook is initialize pointer of Book
 func NewBook(book *db.Book) *Book {
 	var publishedAt string
 
@@ -34,8 +35,9 @@ func NewBook(book *db.Book) *Book {
 		book.ID.String(),
 		&publishedAt,
 		book.Publisher,
+		book.CoverURL,
 		book.Overview,
-		book.keyInsights,
+		book.KeyInsights,
 		nil,
 		nil,
 		book.Starred,
@@ -47,5 +49,5 @@ func NewBook(book *db.Book) *Book {
 		b.Category = NewCategory(book.Category)
 	}
 
-	retrun b
+	return b
 }

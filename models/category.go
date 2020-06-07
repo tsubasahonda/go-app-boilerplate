@@ -6,14 +6,14 @@ import (
 
 // Category model
 type Category struct {
-	ID string `json:"id"`
+	ID   string `json:"id"`
 	Name string `json:"name"`
 }
 
 // NewCategory make Category pointer
 func NewCategory(category *db.Category) *Category {
-	return &Category {
-		cateogry.ID.String(),
+	return &Category{
+		category.ID.String(),
 		category.Name,
 	}
 }

@@ -10,10 +10,11 @@ import (
 type Book struct {
 	ID          uuid.UUID
 	Title       string
-	Authoer     *string
+	Author      *string
 	ISBN        *int64
 	PublishedAt *time.Time
 	Publisher   *string
+	CoverURL    *string
 	Overview    *string
 	KeyInsights []string
 	CategoryID  *uuid.UUID
